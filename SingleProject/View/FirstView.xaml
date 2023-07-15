@@ -1,0 +1,51 @@
+﻿<Window x:Class="SingleProject.View.FirstView"      
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SingleProject.View"
+        xmlns:VM="clr-namespace:SingleProject.VM"
+        mc:Ignorable="d"
+        Title="FirstView" Height="600" Width="800"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent">
+    <Window.DataContext>
+        <VM:FirstViewVM/>
+    </Window.DataContext>
+
+    <Grid>
+        <Border Background="BlueViolet"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Canvas>
+                <!-- Rectangle 7 -->
+                <Rectangle Width="200" Height="150" Fill="#80772B98" />
+                <!-- Polygon 3 -->
+                <Polygon Points="50,150 200,50 200,300" Fill="#80D0BCDC" Opacity="0.5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Canvas.Top="-48" />
+                <Ellipse Height="53" Width="48" Canvas.Top="414" Fill="#FFBD4DEE" Opacity="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="152"/>
+                <Polygon Points="200 50 50 200 20 40" Fill="#FF7B04B7" HorizontalAlignment="Center" Canvas.Left="-13" VerticalAlignment="Center" Width="203" Canvas.Top="300" Opacity="0.3" Height="194"/>
+
+                <Polygon Points="0,0 60,0 80,25 60,50 0,50" Fill="#FF6905A4" HorizontalAlignment="Center" Canvas.Top="550" VerticalAlignment="Top" Opacity="0.5" />
+            </Canvas>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
+                <Button Style="{StaticResource CustomButtonStyle}" Content="Home" Command="{Binding HomeCommand}" Margin="0 5"/>
+                <Button Style="{StaticResource CustomButtonStyle}" Content="Student" Command="{Binding StudentListCommand}" Margin="0 5"/>
+                <Button Style="{StaticResource CustomButtonStyle}" Content="Log out" Command="{Binding LogoutCommand}" Margin="0 5"/>
+            </StackPanel>
+
+            <Grid Grid.Column="1">
+                <Grid Grid.Column="1">
+                    <Border Background="Black"/>
+                    <StackPanel Height="Auto" Width="Auto">
+                        <ContentControl Content="{Binding CurrentView}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

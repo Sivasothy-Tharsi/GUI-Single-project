@@ -1,0 +1,80 @@
+﻿<Window x:Class="SingleProject.View.AddStudentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:SingleProject.View"
+        xmlns:VM="clr-namespace:SingleProject.VM"
+        mc:Ignorable="d"
+        Title="AddStudentView" Height="450" Width="500"
+        ResizeMode="NoResize"
+        WindowState="Normal"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <VM:AddStudentVM/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Style="{StaticResource BtnStyle}" Command="{Binding CloseCommand}" Grid.Column="1"  Width="30" Height="20"  Margin="210,7,10,423" >
+            <md:PackIcon Kind="Close"/>
+        </Button>
+        
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Grid.Column="1" Margin="0,32,0,0">
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Text="First name"/>
+                <TextBox Text="{Binding FirstName}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Text="Last name"/>
+                <TextBox Text="{Binding LastName}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Text="Age"/>
+                <TextBox Text="{Binding Age}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Text="Date of birth"/>
+                <DatePicker SelectedDate="{Binding DOB, Mode=TwoWay}" SelectedDateFormat="Short"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Text="GPA"/>
+                <TextBox Text="{Binding GPA}"/>
+            </StackPanel>
+            <Button Style="{StaticResource BtnStyle}" Content="Upload Image" Margin="10" Command="{Binding UploadImageCommand}"/>
+            <Image Source="{Binding ImagePath}" Width="40" Height="40"/>
+            <Button Style="{StaticResource BtnStyle}" Content="Submit" Margin="10" Command="{Binding SubmitCommand}"/>
+        </StackPanel>
+
+        <Grid Grid.Column="0">
+            <Border Background="BlueViolet"/>
+            <TextBlock Text="Detail Form" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,105,0,0" FontSize="30" FontWeight="Bold"/>
+            <Ellipse Width="100" Height="100" StrokeThickness="5" Stroke="White">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="{Binding ImagePath}"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock Text="{Binding FirstName}" FontSize="18" Background="Transparent" HorizontalAlignment="Center" Height="30" Margin="0,280,0,120"/>
+            <Canvas>
+                <Polygon Points="100 200 200 10 20 10" Fill="White" HorizontalAlignment="Left" 
+                         Canvas.Top="229" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Canvas.Left="-32" Height="196" Opacity="0.2" Width="251">
+                    <Polygon.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90.024"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Polygon.RenderTransform>
+                </Polygon>
+                <Ellipse Width="50" Height="50" Fill="White" Canvas.Left="190" Canvas.Top="10" Opacity="0.1"/>
+                <Ellipse Width="50" Height="50" Fill="White" Canvas.Left="24" Canvas.Top="175" Opacity="0.1"/>
+            </Canvas>
+        </Grid>
+    </Grid>
+</Window>
